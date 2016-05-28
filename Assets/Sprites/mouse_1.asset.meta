@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 1488bd3d74f22ff4ba0f7f20cfd808c5
+timeCreated: 1464459387
+licenseType: Free
+NativeFormatImporter:
+  userData: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD
+    SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n<!-- Creator:
+    CorelDRAW X7 -->\r\n<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\"
+    width=\"4.16666in\" height=\"4.16666in\" version=\"1.1\" style=\"shape-rendering:geometricPrecision;
+    text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd;
+    clip-rule:evenodd\"\r\nviewBox=\"0 0 4167 4167\"\r\n xmlns:xlink=\"http://www.w3.org/1999/xlink\">\r\n
+    <defs>\r\n  <style type=\"text/css\">\r\n   <![CDATA[\r\n    .fil0 {fill:blue}\r\n
+    \   .fil2 {fill:#666666}\r\n    .fil1 {fill:white}\r\n   ]]>\r\n  </style>\r\n
+    </defs>\r\n <g id=\"Layer_x0020_1\">\r\n  <metadata id=\"CorelCorpID_0Corel-Layer\"/>\r\n
+    \ <path class=\"fil0\" d=\"M922 306c378,0 685,326 685,728 0,23 -1,46 -3,69 154,-67
+    323,-104 501,-104 167,0 328,33 476,93 -1,-11 -1,-23 -1,-34 0,-403 307,-729 685,-729
+    379,0 686,326 686,729 0,392 -291,711 -656,728 87,188 136,399 136,623 0,779 -594,1410
+    -1326,1410 -733,0 -1327,-631 -1327,-1410 0,-233 53,-453 147,-646 -1,0 -2,0 -3,0
+    -379,0 -686,-326 -686,-729 0,-402 307,-728 686,-728z\"/>\r\n  <ellipse class=\"fil1\"
+    cx=\"1681\" cy=\"2023\" rx=\"264\" ry=\"376\"/>\r\n  <ellipse class=\"fil1\" cx=\"2514\"
+    cy=\"2053\" rx=\"264\" ry=\"376\"/>\r\n  <ellipse class=\"fil2\" cx=\"1681\" cy=\"1835\"
+    rx=\"132\" ry=\"188\"/>\r\n  <ellipse class=\"fil2\" cx=\"2623\" cy=\"2158\" rx=\"132\"
+    ry=\"188\"/>\r\n </g>\r\n</svg>\r\n"
+  assetBundleName: 
+  assetBundleVariant: 
