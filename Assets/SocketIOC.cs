@@ -15,8 +15,14 @@ public class SocketIOC : MonoBehaviour {
 			Debug.Log(data);
 		});
 		socket.Error += (sender, e) => {
-			Debug.Log ("socket Error: " + e.Message.ToString ());
+			Debug.Log("socket Error: " + e.Message.ToString ());
 		};
+		
 		socket.Connect();
+		Debug.Log("Connected to socket");
+	}
+	void OnDestroy() {
+		socket.Close();
+		Debug.Log("Disconnected socket");
 	}
 }
