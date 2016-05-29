@@ -10,13 +10,15 @@ using SocketIOClient.Messages;
 public class SocketIOC : MonoBehaviour {
 	Client socket;
 
+    public string serverAddress;
+
     private Queue<IMessage> messageQueue;
     
     void Start ()
 	{
         messageQueue = new Queue<IMessage>();
 
-        socket = new Client("http://192.168.3.250:9876");
+        socket = new Client(serverAddress);
 		socket.On("connect", (fn) => {
 			Debug.Log ("connect - socket");
 			socket.Emit("add user", "user_unity");
