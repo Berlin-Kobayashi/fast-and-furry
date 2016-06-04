@@ -28,12 +28,14 @@ public class GameController : MonoBehaviour
             int random = Random.Range(0, baseRats.Length);
             Transform randomRat = baseRats[random];
             player = (Transform)Instantiate(randomRat, position, Quaternion.identity);
+            player.GetComponent<RatBehaviour>().setPrefabIndex(random);
         }
         else
         {
             int random = Random.Range(0, baseCats.Length);
             Transform randomCat = baseCats[random];
             player = (Transform)Instantiate(randomCat, position, Quaternion.identity);
+            player.GetComponent<CatBehaviour>().setPrefabIndex(random);
         }
         
         playerMap.Add(name,player);

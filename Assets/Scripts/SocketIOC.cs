@@ -24,19 +24,19 @@ public class SocketIOC : MonoBehaviour {
 			socket.Emit("add user", "user_unity");
 		});
 		socket.On("user joined", (data) => {
-            Debug.Log(data);
+ //           Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("set vector2D", (data) => {
-            Debug.Log(data);
+//            Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.Error += (sender, e) => {
-			Debug.Log("socket Error: " + e.Message.ToString ());
+	//		Debug.Log("socket Error: " + e.Message.ToString ());
 		};
 		
 		socket.Connect();
-		Debug.Log("Connected to socket");
+//		Debug.Log("Connected to socket");
 	}
 
     void Update()
@@ -46,8 +46,6 @@ public class SocketIOC : MonoBehaviour {
             IMessage message = messageQueue.Dequeue();
 
             JsonObject args = (JsonObject) message.Json.args[0];
-
-           Debug.Log(args.Values.ElementAt(0).GetType());
 
             switch (message.Json.name)
             {
