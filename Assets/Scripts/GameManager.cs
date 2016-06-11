@@ -5,22 +5,43 @@ using System;
 
 public class GameManager : MonoBehaviour {
 
-    public Text timerText;
-    public Text addressText;
+    public static GameManager instance = null;
+
     public int timer = 30;
-    public GameObject panel;
+    public Canvas canvas;
+    public Text timerText;
 
 	void Start () {
         StartCoroutine(CountdownRoutine());
-	}
+       // GameObject.FindObjectOfType<GameController>().setRunning(false);
+
+    }
+
+    void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+
+            //if not, set instance to this
+            instance = this;
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
+    }
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TriggerStart();
         }
-       
-	}
+
+    }
 
     private void TriggerStart()
     {
@@ -30,7 +51,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
     }
 
-    IEnumerator CountdownRoutine()
+   public IEnumerator CountdownRoutine()
     {
         int i = 1;
         while (timer > i)
@@ -39,11 +60,19 @@ public class GameManager : MonoBehaviour {
             timerText.text = timer.ToString();
             yield return new WaitForSeconds(1);
         }
-        timerText.gameObject.SetActive(false);
-        addressText.gameObject.SetActive(false);
-        panel.gameObject.SetActive(false);
-
+        SwitchCanvas();
         GameObject.FindObjectOfType<GameController>().setRunning(true);
+        timer = 30;
+    }
+
+   public void SwitchCanvas()
+    {
+        canvas.gameObject.SetActive(!canvas.gameObject.active);
+    }
+
+    public void StartCountdown()
+    {
+        StartCoroutine(CountdownRoutine());
     }
 
 }

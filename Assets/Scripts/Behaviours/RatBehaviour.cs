@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SVGImporter;
+using System;
 
 public class RatBehaviour : MonoBehaviour
 {
     private int prefabIndex;
+    GameObject[] leftRats;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -28,6 +31,19 @@ public class RatBehaviour : MonoBehaviour
         gameObject.tag = "Cat";
         gameObject.GetComponent<SVGRenderer>().vectorGraphics = cat.GetComponent<SVGRenderer>().vectorGraphics;
         Destroy(gameObject.GetComponent<RatBehaviour>());
+
+        CheckIfWon();
     }
 
+    private void CheckIfWon()
+    {
+      leftRats = GameObject.FindGameObjectsWithTag("Rat");
+        if (leftRats.Length <= 1)
+        {
+            GameManager.instance.SwitchCanvas();
+            GameManager.instance.StartCountdown();
+            GameObject.FindObjectOfType<GameController>().setRunning(false);
+        }
+       
+    }
 }

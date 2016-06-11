@@ -71,7 +71,8 @@ public class GameController : MonoBehaviour
         if (running)
         {
         Transform player = playerMap[name];
-        player.GetComponent<Rigidbody2D>().AddForce(direction * Time.deltaTime * 1000, ForceMode2D.Force);
+            player.GetComponent<Rigidbody2D>().AddForce(direction * Time.deltaTime * 1000, ForceMode2D.Force);
+         //   player.transform.position = direction;
         }
     }
 
@@ -79,13 +80,6 @@ public class GameController : MonoBehaviour
     {
         this.running = running;
 
-        if (running)
-        {
-            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
-        }
-        else
-        {
-            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
-        }
+        GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
     }
 }

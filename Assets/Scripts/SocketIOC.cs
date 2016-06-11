@@ -25,7 +25,7 @@ public class SocketIOC : MonoBehaviour {
 			socket.Emit("add-user", "{\"userId\":\"game\", \"userName\":\"game\"}");
 		});
 		socket.On("user-joined", (data) => {
-    //        Debug.Log(data);
+           Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("user-left", (data) => {
