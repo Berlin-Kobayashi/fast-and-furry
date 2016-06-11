@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public Transform[] baseRats;
 
     private Dictionary<String, Transform> playerMap;
-    private int numberOfMouses = 0;
+    private int numberOfRats = 0;
     private Boolean running = false;
 
     void Start()
@@ -43,12 +43,9 @@ public class GameController : MonoBehaviour
         playerMap.Add(name,player);
     }
 
-    private Vector2 createRandomVisiblePosition()
+    public void deSpawnPlayer(string name)
     {
-        int maxX = 10;
-        int maxY = 4;
-
-        return new Vector2(Random.Range(maxX * -1, maxX), Random.Range(maxY * -1, maxY));
+        Destroy(playerMap[name].gameObject);
     }
 
     private Vector2 createRandomPosition(int minX, int maxX , int minY, int maxY)

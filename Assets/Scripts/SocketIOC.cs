@@ -22,10 +22,14 @@ public class SocketIOC : MonoBehaviour {
         socket = new Client(serverAddress);
 		socket.On("connect", (fn) => {
 			Debug.Log ("connect - socket");
-			socket.Emit("add-user", "user_unity");
+			socket.Emit("add-user", "{\"userId\":\"game\", \"userName\":\"game\"}");
 		});
 		socket.On("user-joined", (data) => {
     //        Debug.Log(data);
+            messageQueue.Enqueue(data);
+        });
+        socket.On("user-left", (data) => {
+            //        Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("set-vector2D", (data) => {
@@ -51,7 +55,11 @@ public class SocketIOC : MonoBehaviour {
             switch (message.Json.name)
             {
                 case "user-joined":
+                    Debug.Log((string)args.Values.ElementAt(1));
                     GetComponent<GameController>().spawnPlayer( (string)args.Values.ElementAt(0));
+                    break;
+                case "user-left":
+                    GetComponent<GameController>().deSpawnPlayer((string)args.Values.ElementAt(0));
                     break;
                 case "set-vector2D":
 
