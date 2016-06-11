@@ -47,12 +47,8 @@ public class GameController : MonoBehaviour
 
     public void deSpawnPlayer(string name)
     {
+     //   playerMap.Remove(name);
         Destroy(playerMap[name].gameObject);
-    }
-
-    public void resetPlayerProperties(string catName)
-    {
-        
     }
 
     private Vector2 createRandomPosition(int minX, int maxX , int minY, int maxY)
@@ -87,6 +83,14 @@ public class GameController : MonoBehaviour
     {
         this.running = running;
 
-        GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
+        if (running)
+        {
+            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
+        }
+        else
+        {
+            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-ended", "");
+        }
+        
     }
 }
