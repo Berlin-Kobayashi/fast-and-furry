@@ -33,7 +33,7 @@ public class SocketIOC : MonoBehaviour {
             messageQueue.Enqueue(data);
         });
         socket.On("set-vector2D", (data) => {
-   //         Debug.Log(data);
+            Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.Error += (sender, e) => {

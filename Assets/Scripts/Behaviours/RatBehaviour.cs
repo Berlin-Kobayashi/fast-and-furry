@@ -43,6 +43,7 @@ public class RatBehaviour : MonoBehaviour
             GameManager.instance.SwitchCanvas();
             GameManager.instance.StartCountdown();
             GameObject.FindObjectOfType<GameController>().setRunning(false);
+
         }
        
     }
