@@ -79,6 +79,13 @@ public class GameController : MonoBehaviour
     {
         this.running = running;
 
-        GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
+        if (running)
+        {
+            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
+        }
+        else
+        {
+            GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
+        }
     }
 }
