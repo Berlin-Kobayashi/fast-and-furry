@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour {
         timerText.gameObject.SetActive(false);
         addressText.gameObject.SetActive(false);
         panel.gameObject.SetActive(false);
-      
+
+        GameObject.FindObjectOfType<GameController>().setRunning(true);
     }
 
 }

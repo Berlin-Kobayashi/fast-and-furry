@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public Transform[] baseRats;
 
     private Dictionary<String, Transform> playerMap;
+    private int numberOfMouses = 0;
+    private Boolean running = false;
 
     void Start()
     {
@@ -19,12 +21,11 @@ public class GameController : MonoBehaviour
 
     public void spawnPlayer(string name)
     {
-        Vector2 position = createRandomVisiblePosition();
-
         Transform player;
 
         if (doesCatExist())
         {
+            Vector2 position = createRandomPosition(0,10,-4,4);
             int random = Random.Range(0, baseRats.Length);
             Transform randomRat = baseRats[random];
             player = (Transform)Instantiate(randomRat, position, Quaternion.identity);
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            Vector2 position = createRandomPosition(-10, 0, -4, 4);
             int random = Random.Range(0, baseCats.Length);
             Transform randomCat = baseCats[random];
             player = (Transform)Instantiate(randomCat, position, Quaternion.identity);
@@ -49,6 +51,11 @@ public class GameController : MonoBehaviour
         return new Vector2(Random.Range(maxX * -1, maxX), Random.Range(maxY * -1, maxY));
     }
 
+    private Vector2 createRandomPosition(int minX, int maxX , int minY, int maxY)
+    {
+        return new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+
     private Boolean doesCatExist()
     {
         foreach (Transform cat in baseCats)
@@ -64,7 +71,17 @@ public class GameController : MonoBehaviour
 
     public void movePlayer(string name, Vector2 direction)
     {
+        if (running)
+        {
         Transform player = playerMap[name];
         player.GetComponent<Rigidbody2D>().AddForce(direction * Time.deltaTime * 1000, ForceMode2D.Force);
+        }
+    }
+
+    public void setRunning(Boolean running)
+    {
+        this.running = running;
+
+        GameObject.FindObjectOfType<SocketIOC>().socket.Emit("game-running", "");
     }
 }

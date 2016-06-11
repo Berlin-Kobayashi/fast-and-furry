@@ -8,7 +8,7 @@ using SocketIOClient;
 using SocketIOClient.Messages;
 
 public class SocketIOC : MonoBehaviour {
-	Client socket;
+	public Client socket;
 
     public string serverAddress;
 
@@ -25,11 +25,11 @@ public class SocketIOC : MonoBehaviour {
 			socket.Emit("add-user", "user_unity");
 		});
 		socket.On("user-joined", (data) => {
-            Debug.Log(data);
+    //        Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("set-vector2D", (data) => {
-            Debug.Log(data);
+   //         Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.Error += (sender, e) => {
