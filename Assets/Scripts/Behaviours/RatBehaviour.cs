@@ -7,7 +7,7 @@ public class RatBehaviour : MonoBehaviour
 {
     private int prefabIndex;
     GameObject[] leftRats;
-
+    private string name;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +22,11 @@ public class RatBehaviour : MonoBehaviour
     public void setPrefabIndex(int prefabIndex)
     {
         this.prefabIndex = prefabIndex;
+    }
+
+    public void setName(string name)
+    {
+        this.name = name;
     }
 
     public void toCat()

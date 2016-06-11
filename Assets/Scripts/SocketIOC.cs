@@ -16,7 +16,7 @@ public class SocketIOC : MonoBehaviour {
     
     void Start ()
 	{
-		Debug.Log (serverAddress);
+	//	Debug.Log (serverAddress);
         messageQueue = new Queue<IMessage>();
 
         socket = new Client(serverAddress);
@@ -25,19 +25,19 @@ public class SocketIOC : MonoBehaviour {
 			socket.Emit("add-user", "{\"userId\":\"game\", \"userName\":\"game\"}");
 		});
 		socket.On("user-joined", (data) => {
-           Debug.Log(data);
+   //     Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("user-left", (data) => {
-            //        Debug.Log(data);
+    //       Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.On("set-vector2D", (data) => {
-            Debug.Log(data);
+//      Debug.Log(data);
             messageQueue.Enqueue(data);
         });
         socket.Error += (sender, e) => {
-	//		Debug.Log("socket Error: " + e.Message.ToString ());
+	Debug.Log("socket Error: " + e.Message.ToString ());
 		};
 		
 		socket.Connect();
@@ -56,7 +56,7 @@ public class SocketIOC : MonoBehaviour {
             {
                 case "user-joined":
                     Debug.Log((string)args.Values.ElementAt(1));
-                    GetComponent<GameController>().spawnPlayer( (string)args.Values.ElementAt(0));
+                    GetComponent<GameController>().spawnPlayer( (string)args.Values.ElementAt(0), (string)args.Values.ElementAt(1));
                     break;
                 case "user-left":
                     GetComponent<GameController>().deSpawnPlayer((string)args.Values.ElementAt(0));

@@ -7,16 +7,21 @@ public class CatBehaviour : MonoBehaviour {
 
     private int prefabIndex;
     public float speed = 0.1f;
-   
+    private string name;
 
     // Use this for initialization
     void Start () {
-	
+	Debug.Log(name);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Controls();
+    }
+
+    public void setName(string name)
+    {
+        this.name = name;
     }
 
     private void Controls()

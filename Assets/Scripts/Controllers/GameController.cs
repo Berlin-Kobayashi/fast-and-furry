@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
         playerMap = new Dictionary<string, Transform>();
     }
 
-    public void spawnPlayer(string name)
+    public void spawnPlayer(string id, string name)
     {
         Transform player;
 
@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
             Transform randomRat = baseRats[random];
             player = (Transform)Instantiate(randomRat, position, Quaternion.identity);
             player.GetComponent<RatBehaviour>().setPrefabIndex(random);
+            player.GetComponent<RatBehaviour>().setName(name);
         }
         else
         {
@@ -38,14 +39,20 @@ public class GameController : MonoBehaviour
             Transform randomCat = baseCats[random];
             player = (Transform)Instantiate(randomCat, position, Quaternion.identity);
             player.GetComponent<CatBehaviour>().setPrefabIndex(random);
+            player.GetComponent<CatBehaviour>().setName(name);
         }
         
-        playerMap.Add(name,player);
+        playerMap.Add(id, player);
     }
 
     public void deSpawnPlayer(string name)
     {
         Destroy(playerMap[name].gameObject);
+    }
+
+    public void resetPlayerProperties(string catName)
+    {
+        
     }
 
     private Vector2 createRandomPosition(int minX, int maxX , int minY, int maxY)
