@@ -24,6 +24,11 @@ public class CatBehaviour : MonoBehaviour {
         this.name = name;
     }
 
+    public string getName()
+    {
+        return name;
+    }
+
     private void Controls()
     {
         if (Input.GetKey(KeyCode.W))

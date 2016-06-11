@@ -29,6 +29,11 @@ public class RatBehaviour : MonoBehaviour
         this.name = name;
     }
 
+    public string getName()
+    {
+        return name;
+    }
+
     public void toCat()
     {
         Transform cat = GameObject.FindObjectOfType<GameController>().baseCats[this.prefabIndex];
